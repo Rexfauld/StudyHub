@@ -30,11 +30,12 @@ export default function SignInModal({ open, onClose }) {
       const res = await fetch(`${BACKEND}/api/auth/email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Sign in failed');
+      // Store JWT and reload so AuthContext picks it up
+      localStorage.setItem('auth_token', data.token);
       window.location.reload();
     } catch (err) {
       setError(err.message);
