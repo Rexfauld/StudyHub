@@ -6,11 +6,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const passport = require('passport');
 
-const authRoutes = require('./routes/auth');
+const authRoutes   = require('./routes/auth');
 const uploadRoutes = require('./routes/uploads');
-const adminRoutes = require('./routes/admin');
+const adminRoutes  = require('./routes/admin');
 const courseRoutes = require('./routes/courses');
 const searchRoutes = require('./routes/search');
+const aiRoutes     = require('./routes/ai');
 
 require('./config/passport');
 
@@ -18,19 +19,19 @@ const app = express();
 app.set('trust proxy', 1);
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(express.json());
-
 app.use(passport.initialize());
 
-app.use('/api/auth', authRoutes);
+app.use('/api/auth',    authRoutes);
 app.use('/api/uploads', uploadRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/api/admin',   adminRoutes);
 app.use('/api/courses', courseRoutes);
-app.use('/api/search', searchRoutes);
+app.use('/api/search',  searchRoutes);
+app.use('/api/ai',      aiRoutes);
 
 const PORT = process.env.PORT || 4000;
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => {
-  console.log('Mongo connected');
-  app.listen(PORT, () => console.log('Server running on', PORT));
-})
-.catch(err => console.error(err));
+  .then(() => {
+    console.log('Mongo connected');
+    app.listen(PORT, () => console.log('Server running on', PORT));
+  })
+  .catch(err => console.error(err));

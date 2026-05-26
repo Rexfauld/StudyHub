@@ -8,6 +8,7 @@
     "seed:kstu": "node seeds/kstuSeed.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.97.0",
     "@supabase/supabase-js": "^2.99.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.32.0",

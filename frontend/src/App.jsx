@@ -13,6 +13,7 @@ import Courses from './pages/Courses';
 import Settings from './pages/Settings';
 import AdminDashboard from './pages/AdminDashboard';
 import Header from './components/Header';
+import AIChatWidget from './components/AIChatWidget';
 import SHSSubjects from './pages/SHSSubjects';
 import SearchResults from './pages/SearchResults';
 import NotFound from './pages/NotFound';
@@ -58,6 +59,7 @@ function AppInner() {
           <Route path="*"                         element={<NotFound />} />
         </Routes>
       </main>
+      <AIChatWidget />
     </>
   );
 }
