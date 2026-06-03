@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-
-const BACKEND = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
-
+// Replace the current BACKEND constant with this:
+const BACKEND = 'http://localhost:4000';
 export default function SignInModal({ open, onClose }) {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState('');
